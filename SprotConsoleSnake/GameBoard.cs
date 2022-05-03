@@ -16,17 +16,6 @@ namespace SprotConsoleSnake
         public int FoodY { get; set; }
         public ConsoleKeyInfo Key { get; set; }
 
-        public int XW { get; set; }
-        public int YW { get; set; }
-        public int XA { get; set; }
-        public int YA { get; set; }
-        public int XS { get; set; }
-        public int YS { get; set; }
-        public int XD { get; set; }
-        public int YD { get; set; }
-
-
-
         static public void Board()
         {
             int y = 0;
@@ -54,7 +43,7 @@ namespace SprotConsoleSnake
             Y = y;
             Console.SetCursorPosition(X, Y);
             Console.Write("*");
-           
+
         }
 
         public void Previous()
@@ -79,9 +68,9 @@ namespace SprotConsoleSnake
             {
                 Previous();
                 Y++;
-                
-                SnakeMove(X, Y);
 
+                SnakeMove(X, Y);
+           
             }
                 
             if (Key.Key == ConsoleKey.A)
@@ -109,14 +98,14 @@ namespace SprotConsoleSnake
             Console.SetCursorPosition(PreX, PreY);
             Console.Write(" ");
             if (X == FoodX && Y == FoodY)
-            {
+           {
                 GenerateFood();
             }
 
 
 
-        }
-
+           }
+            
 
 
 

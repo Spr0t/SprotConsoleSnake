@@ -21,7 +21,7 @@ namespace SprotConsoleSnake
                 g.Clear();
 
             }
-            
+
 
 
 
