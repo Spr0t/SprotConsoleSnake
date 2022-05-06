@@ -12,13 +12,12 @@ namespace SprotConsoleSnake
     {
         public static GameStatus status;
 
+        public static Thread sleep { get; set; }
         public static int score { get; set; }
-
-        static Timer time;
 
         public static void Start()
         {
-            time = new Timer(Loop, null, 0, 200);
+            
             GameBoard.Board();
             var snake = new Snake(40, 20, 4);
             snake.FoodFactory();
@@ -27,23 +26,22 @@ namespace SprotConsoleSnake
             {
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
-
+                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    snake.SetDirection(key);
                 }
+                snake.FoodCheck();
+                snake.Move(1);
+                snake.Print();
+                Thread.Sleep(300);
+                snake.GameOver();
             }
 
-            snake.FoodCheck();
-            snake.Move(1);
-            snake.Print();
-            snake.GameOver();
             Console.ReadLine();
-        }
 
-        static void Loop(object obj)
-        {
 
         }
-        
+
+
         public static void ToDrawScore()
         {
             Console.SetCursorPosition(85, 0);

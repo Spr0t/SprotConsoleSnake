@@ -38,12 +38,9 @@ namespace SprotConsoleSnake
             Game.status = Game.GameStatus.InProgress;
         }
 
-        public void Move(int speed)
+        public void SetDirection(ConsoleKeyInfo key)
         {
-            int x = 0, y = 0;
-
-            Key = Console.ReadKey(true);
-
+            Key = key;
             if (Key.Key == ConsoleKey.A)
             {
                 direction = Direction.Left;
@@ -60,6 +57,11 @@ namespace SprotConsoleSnake
             {
                 direction = Direction.Down;
             }
+        }
+
+        public void Move(int speed)
+        {
+            int x = 0, y = 0;
 
             switch (direction)
             {
@@ -135,10 +137,8 @@ namespace SprotConsoleSnake
             }
         }
 
-        
-        
-
-        public void GameOver()
+     
+        public  void GameOver()
         {
             for (var i = 1; i < Segments.Count; i++)
             {
@@ -146,8 +146,10 @@ namespace SprotConsoleSnake
                 {
                     Game.status = Game.GameStatus.IsOver;
                     Game.ToDrawScore();
+                    
                 }
             }
+            
         }
 
     }
