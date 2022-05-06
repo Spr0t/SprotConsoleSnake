@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace SprotConsoleSnake
 {
-    public class Game
-    {
-        //public Game()
-        //{
-            
-        //    Task task = Task.Factory.StartNew(GameBoard.Board);
-            
-        //    Task task1 = Task.Factory.StartNew(() => GameBoard.SnakeHead());
-        //}
+   public class Game
+   {
+
+        public static void Start()
+        {
+            GameBoard.Board();
+            var snake = new Snake(40, 20, 4);
+            snake.FoodFactory();
+            snake.Print();
+            while (true)
+            {
+                snake.FoodCheck();
+                snake.Move(1);
+                snake.Print();
+                
+            }
+
+        }
+
 
 
     }

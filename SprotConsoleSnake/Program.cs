@@ -10,22 +10,11 @@ namespace SprotConsoleSnake
     {
         static void Main(string[] args)
         {
-
-            GameBoard.Board();
-            GameBoard g = new GameBoard();
-            g.SnakeMove();
-            g.GenerateFood();
-            while (true)
-            {
-                g.Move();
-                g.Clear();
-
-            }
-
-
-
-
+            Console.WriteLine("Welcome to snake game =)\nTo start - press 'Enter' ");
             Console.ReadLine();
+            Console.Clear();
+            Game.Start();
+
         }
     }
 }

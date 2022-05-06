@@ -8,14 +8,6 @@ namespace SprotConsoleSnake
 {
      public class GameBoard
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int PreX { get; set; }
-        public int PreY { get; set; }
-        public int FoodX { get; set; }
-        public int FoodY { get; set; }
-        public ConsoleKeyInfo Key { get; set; }
-
         static public void Board()
         {
             int y = 0;
@@ -36,95 +28,6 @@ namespace SprotConsoleSnake
                 y++;
             }
         }
-
-        public void SnakeMove(int x = 40,int y = 23)
-        {
-            X = x;
-            Y = y;
-            Console.SetCursorPosition(X, Y);
-            Console.Write("*");
-
-        }
-
-        public void Previous()
-        {
-            PreX = X;
-            PreY = Y;
-        }
-
-        public void Move() 
-        {
-            Key = Console.ReadKey(true);
-           
-            if(Key.Key == ConsoleKey.W)
-            {
-                Previous();
-                Y--;
-                
-                SnakeMove(X, Y);
-
-            }
-            if (Key.Key == ConsoleKey.S)
-            {
-                Previous();
-                Y++;
-
-                SnakeMove(X, Y);
-           
-            }
-                
-            if (Key.Key == ConsoleKey.A)
-            {
-                Previous();
-                X--;
-                
-                SnakeMove(X, Y);
-
-            }
-                
-            if (Key.Key == ConsoleKey.D)
-            {
-                Previous();
-                X++;
-                
-                SnakeMove(X, Y);
-            }
-                
-                     
-        }
-
-        public void Clear()
-        {
-            Console.SetCursorPosition(PreX, PreY);
-            Console.Write(" ");
-            if (X == FoodX && Y == FoodY)
-           {
-                GenerateFood();
-            }
-
-
-
-           }
-            
-
-
-
-
-        public void GenerateFood()
-        {
-            var rnd = new Random();
-
-            FoodX = rnd.Next(3,77);
-            FoodY = rnd.Next(3,43);
-
-            Console.SetCursorPosition(FoodX, FoodY);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("О");
-            Console.ResetColor(); 
-
-        }
-
-
 
     }
 }
