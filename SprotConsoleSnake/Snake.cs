@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SprotConsoleSnake
 {
     public partial class Snake
     {
         public List<Segment> Segments { get; set; }
         public int size => Segments.Count;
-
+        
         ConsoleKeyInfo Key { get; set; }
 
         public Direction direction { get; set; }
@@ -34,6 +35,7 @@ namespace SprotConsoleSnake
             }
             direction = Direction.Up;
             Print();
+            Game.status = Game.GameStatus.InProgress;
         }
 
         public void Move(int speed)
@@ -81,6 +83,8 @@ namespace SprotConsoleSnake
             }
             Segments[0].X += x;
             Segments[0].Y += y;
+
+
         }
 
         public void FoodCheck()
@@ -95,7 +99,7 @@ namespace SprotConsoleSnake
                 }
                 FoodFactory();
                 Segments.Add(new Segment(X, Y));
-                    
+                Game.score++;
 
             }
         }
@@ -127,6 +131,21 @@ namespace SprotConsoleSnake
                 {
                     Console.SetCursorPosition(Segments[i].X, Segments[i].Y);
                     Console.Write('*');
+                }
+            }
+        }
+
+        
+        
+
+        public void GameOver()
+        {
+            for (var i = 1; i < Segments.Count; i++)
+            {
+                if (Segments[0].X == Segments[i].X && Segments[0].Y == Segments[i].Y || Segments[0].X == 80 || Segments[0].X == 79 || Segments[0].X == 0 || Segments[0].Y == 45 || Segments[0].Y == 0)
+                {
+                    Game.status = Game.GameStatus.IsOver;
+                    Game.ToDrawScore();
                 }
             }
         }
